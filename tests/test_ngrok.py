@@ -26,7 +26,7 @@ class TestNgrok(object):
         print("Enabling ngrok")
         microk8s_enable(
             addon="ngrok",
-            optional_args="--namespace ngrok-ingress-controller --secret-name test",
+            optional_args="--namespace ngrok-operator --secret-name test",
         )
         print("Validating ngrok")
         self.validate_ngrok()
@@ -38,6 +38,6 @@ class TestNgrok(object):
         Validate ngrok
         """
         kubectl_get(
-            "deployment ngrok-ingress-controller-kubernetes-ingress-controller-manager"
-            " -n ngrok-ingress-controller"
+            "deployment ngrok-operator-manager"
+            " -n ngrok-operator"
         )
